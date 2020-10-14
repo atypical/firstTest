@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @Binding var showProfile: Bool
+    @State var showUpdate = false
+    
+    
     
     var body: some View {
         VStack {
@@ -19,6 +22,22 @@ struct HomeView: View {
                 Spacer()
                 //passed binding state requires $ to call it
                 AvatarView(showProfile: $showProfile)
+                
+                //little bell icon on the top right (button)
+                Button(action: {self.showUpdate.toggle()}) {
+                    Image(systemName: "bell")
+                        .renderingMode(.original)
+                        .font(.system(size: 16, weight: .medium))
+                        .frame(width: 36, height: 36)
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)).opacity(0.1), radius: 1, x: 0, y: 1)
+                        .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)).opacity(0.2), radius: 10, x: 0, y: 10)
+                }
+                //sheet up - WHY ISNT THE BG BLACK?!
+                .sheet(isPresented: $showUpdate) {
+                    UpdateList()
+                }
             }
             .padding(.horizontal)
             .padding(.leading, 14)

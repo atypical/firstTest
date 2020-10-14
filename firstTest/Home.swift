@@ -18,10 +18,7 @@ struct Home: View {
     @State var viewState = CGSize.zero
     
     var body: some View {
-        ZStack {
-            Color.offWhite
-                .edgesIgnoringSafeArea(.all)
-            
+        ZStack {            
             HomeView(showProfile: $showProfile)
                 //This padding is bc the ignore safe space overrides the native safe space
                 .padding(.top, 44)

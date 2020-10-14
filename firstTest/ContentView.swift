@@ -28,6 +28,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
+            
             TitleView()
                 //show ? is a this or for animation
                 .blur(radius: show ? 20 : 0)
@@ -138,6 +139,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+           
     }
 }
 
